@@ -5,16 +5,29 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Register</title>
+    <link rel="stylesheet" href="register.css">
 </head>
 <body>
     <h2>Sign Up</h2>
+    
     <p><a href="index.html">Home</a></p>
-    <form action="#" method="POST">
-        <div>
-            <p>Already have an account? <a href="login.html">Log In</a></p>
+    <form action="#" method="POST" class="register_form">
+        <div class="logo-container">
+            <img class="logo" src="img/STARNET LOGO.jpg" alt="logo">
         </div>
-        <input type="text" name="first" placeholder="First Name">
-
+        <div class="register_content">
+            <div class="register_header">
+                Already have an account? <a href="login.html">Log In</a>
+            </div>
+            <input class="input_field" type="text" name="first" placeholder="First Name">
+            <input class="input_field" type="text" name="last" placeholder="Last Name">
+            <input class="input_field" type="text" name="username" placeholder="Enter desired Username">
+            <input class="input_field" type="email" name="email" placeholder="Email">
+            <input class="input_field" type="password" name="password" placeholder="Password (8 characters or more)">
+    
+            <input type="submit" value="Sign Up" class="register_button">
+        </div>
+        
     </form>
 </body>
 </html>

@@ -5,6 +5,7 @@ header{
     left: 0;
     background-color: #ebebeb;
     position: fixed;
+    width: 100%;
 }
 .logo img{
     vertical-align: middle;

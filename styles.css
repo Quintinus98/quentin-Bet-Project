@@ -1,0 +1,34 @@
+header{
+    display: block;
+    padding: 10px;
+    top: 0;
+    left: 0;
+    background-color: #ebebeb;
+    position: fixed;
+}
+.logo img{
+    vertical-align: middle;
+    width: 50px;
+    height: 50px;
+    background-position: 0 0;
+}
+nav ul{
+    /* white-space: nowrap; */
+    max-width: 1200px;
+    margin: 0 auto;
+    text-align: center;
+}
+nav li{
+    /* width: 25%; */
+    display: inline-block;
+    font-size: 24px;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+nav li a{
+    text-decoration: none;
+    color: #434b4b;
+}
+/* nav li a[Register]{
+    text-align: right;
+} */

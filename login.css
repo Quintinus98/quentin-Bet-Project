@@ -1,7 +1,9 @@
 body{
-    background-color: #49b2db;
     margin: 15px;
     margin-top: 50px;
+    background-image: url("img/istockphoto-balls.jpg");
+    background-attachment: fixed;
+    background-size: cover;
 }
 .login-form,
 .login-form * {
@@ -9,6 +11,7 @@ body{
     font-family: sans-serif;
 }
 .login-form{
+    background-color: #49b2db;
     max-width: 350px;
     margin: 0 auto;
     border-radius: 5px;

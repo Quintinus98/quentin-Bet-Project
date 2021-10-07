@@ -1,10 +1,16 @@
+body, div, header, nav, h1, h2, a{
+    margin: 0;
+    padding: 0;
+}
 header{
     display: inline-block;
     padding: 10px;
     padding-right: 25px;
     top: 0;
     left: 0;
-    background-color: #ebebeb;
+    z-index: 1;
+    background-color: #40a0c5;
+    /* background: rgba(0, 0, 0, 0.25); */
     position: fixed;
     width: 100%;
     box-sizing: border-box;
@@ -22,10 +28,11 @@ header nav div{
 header nav div a{
     display: inline-block;
     text-decoration: none;    
-    color: #408dac;
+    color: #1a3742;
 }
 header nav div a:hover{
     text-decoration: underline;
+    color: aliceblue;
 }
 .log_reg{
     margin-left: 15px;
@@ -34,3 +41,29 @@ header nav div a:hover{
     margin-top: 10px;
     float: right;
 }
+section.balls{
+    position: relative;
+    margin-top: 62px;
+    /* max-width: 1200px; */
+}
+section.balls img{
+    width: 100%;
+    /* max-height: 700px; */
+}
+.get_started{
+    text-align: center;
+}
+.get_started{
+    position: absolute;
+    top: 70%;
+    /* display: inline-block; */
+}
+/* .get_started h2 a{
+    text-decoration: none;
+    color: #0000ff;
+    border-radius: 8px;
+    border: 2px solid rgb(146, 66, 13);
+}
+.get_started h2 a:hover{
+    box-sizing: border-box;    
+} */

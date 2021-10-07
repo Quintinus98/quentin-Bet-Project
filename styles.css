@@ -1,11 +1,13 @@
 header{
     display: inline-block;
     padding: 10px;
+    padding-right: 25px;
     top: 0;
     left: 0;
     background-color: #ebebeb;
     position: fixed;
     width: 100%;
+    box-sizing: border-box;
 }
 .logo img{
     vertical-align: middle;
@@ -13,20 +15,22 @@ header{
     height: 50px;
     background-position: 0 0;
 }
-header nav{
-    /* display: inline-block; */
-    /* position: fixed; */
-    flex-wrap: nowrap;
-    right: 100%;
-    /* width: 100%; */
-    /* height: 100%; */
-    /* overflow: auto; */
-}
 header nav div{
     display: inline-block;
+    vertical-align: -webkit-baseline-middle;
 }
 header nav div a{
     display: inline-block;
-    text-decoration: none;
-    color: #28a6f5;
+    text-decoration: none;    
+    color: #408dac;
+}
+header nav div a:hover{
+    text-decoration: underline;
+}
+.log_reg{
+    margin-left: 15px;
+}
+.stay_right{
+    margin-top: 10px;
+    float: right;
 }

@@ -50,6 +50,7 @@ body{
     color: lightgray;
 }
 .login_button{
+    margin-top: 20px;
     padding: 10px;
     color: #ffffff;
     font-weight: bold;

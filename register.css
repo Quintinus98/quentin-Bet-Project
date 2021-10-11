@@ -79,3 +79,7 @@ body{
     margin: 0 0;
     font-size: 0.9em;
 }
+.other_links a:hover{
+    text-decoration: underline;
+    color: rgb(54, 102, 98);
+}

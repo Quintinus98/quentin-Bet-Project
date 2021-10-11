@@ -5,25 +5,191 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>StarnetBET</title>
-    <link rel="stylesheet" href="styles.css">
+    <!-- bootstrap css  -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <!-- bootstrap icons  -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
+    <!-- userdefined icons  -->
+    <link rel="stylesheet" href="styles.css">
+
 </head>
 <body>
-    <header>
-        <nav>
-            <div class="logo">
-                <a href="index.html"><img src="img/STARNET LOGO.jpg" alt="starnet logo"></a>
-            </div>
-            <div class="stay_right">
-                <div class="log_reg"><a href="register.html">Register</a></div>
-                <div class="log_reg"><a href="login.html">Login</a></div>
-            </div>
-        </nav>
-    </header>
-    <section class="balls text-center">
-        <img src="img/sports-picks.jpg" alt="image1" class="front_img">
-        <h2 class="get_started"><a href="login.html" class="btn btn-info">Get Started</a></h2>
-    </section>
+  <!-- toggle button for mobile included image as logo -->
+  <nav class="navbar navbar-expand-lg navbar-light bg-info fixed-top">
+    <div class="container-fluid align-middle">
 
+      <!-- logo and description'StarnetBET' -->
+      <a class="navbar-brand" href="#">
+        <img src="img/STARNET LOGO.jpg" alt="starnet logo" width="40" height="40" class="d-inline-block"><span class="fw-bold text-muted ms-2">StarnetBET</span>
+      </a>
+
+      <!-- button to collapse a view -->
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <!-- items-collapsed  -->
+      <div class="collapse navbar-collapse justify-content-end align-center" id="navbarSupportedContent">
+        <ul class="navbar-nav mb-2 mb-lg-0">
+          <li class="nav-item">
+            <!-- link an about here using this id #about-->
+            <a class="nav-link" href="#about">About</a>
+          </li>
+          <li class="nav-item">
+            <!-- link an about here using this id #contact-->
+            <a class="nav-link" href="#contact">Contact</a>
+          </li>
+          <!-- <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Dropdown
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <li><a class="dropdown-item" href="#">Action</a></li>
+              <li><a class="dropdown-item" href="#">Another action</a></li>
+              <li><hr class="dropdown-divider"></li>
+              <li><a class="dropdown-item" href="#">Something else here</a></li>
+            </ul>
+          </li> -->
+          <li class="nav-item text-bold">
+            <a class="nav-link" href="register.html" tabindex="-1">Register Here</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="login.html">Login</a>
+          </li>
+        </ul>
+        <form class="d-flex">
+          <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+          <button class="btn btn-outline-success" type="submit">Search</button>
+        </form>
+      </div>
+    </div>
+  </nav>
+
+  <section class="balls text-center mt-5">
+      <img style="width: 100%;" src="img/money-lettering-in-coins.jpg" alt="image1" class="img-fluid">
+      <h2 class="get_started"><a href="login.html" class="btn btn-info">Get Started</a></h2>
+  </section>
+
+  <!-- About us -->
+  <section id="about" class="mt-3 p-5">
+      <div class="container-lg">
+          <div class="text-center">
+              <h2>About us</h2>
+              <p class="lead text-muted">
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates sunt aperiam nisi quibusdam ut aspernatur amet quasi laudantium non, quis obcaecati aliquid ipsam similique velit, quaerat nulla numquam exercitationem. Facere ipsam corporis ab provident, doloremque ut eaque odio, molestias omnis fugit sequi ex laudantium vero sed optio rerum! Velit, blanditiis.
+              </p>
+              <p class="lead text-muted">
+                Lorem ipsum dolor sit amet consectetur, adipisicing elit. In sequi illo aspernatur atque veniam mollitia hic, culpa velit! Cum at possimus illo, assumenda est dolore exercitationem aliquid totam inventore iste, ipsum quos facilis commodi dolor nam repellendus porro sint facere dolorem magnam quibusdam! Sunt doloribus aut dolores earum eos accusamus, laudantium explicabo illum voluptas quam ad! Fuga non voluptate mollitia.
+              </p>
+          </div>
+      </div>
+  </section>
+
+  <!-- Contact us -->
+  <section id="contact" class="lightgray py-5">
+    <div class="container-lg">
+      <div class="text-center">
+        <h2>Get in Touch with us</h2>
+        <p class="text-muted">
+          Have a question? Fill out this form to contact me directly...
+        </p>
+      </div>
+
+      <div class="row justify-content-center my-3">
+        <div class="col-sm-9 col-lg-8 col-xl-6">
+          <div class="card border-0 p-5">
+            <!-- form sends action to itself -->
+            <form action="#index.html" method="post">
+              <!-- name  -->
+              <label for="name" class="form-label">Name:</label> <!--Label-->
+              <div class="mb-4 input-group">
+                <span class="input-group-text"><i class="bi bi-person-fill"></i></span>
+                <!--icon in front-->
+                <input type="text" name="name" id="name" class="form-control" placeholder="e.g. starnet">
+              </div> 
+              <!-- email  -->
+              <label for="email" class="form-label">Email:</label>
+              <div class="mb-4 input-group">
+                <span class="input-group-text"><i class="bi bi-envelope-fill"></i></span>
+                <input type="email" name="email" id="email" class="form-control" placeholder="e.g. starnet@example.com">
+              </div>
+              <!-- Query --> 
+              <div class="form-floating my-5">
+                <textarea class="form-control" name="query" id="query" style="height: 150px;"></textarea>
+                <label for="query">Enter your question...</label>
+              </div>
+
+              <!-- submit button  -->
+              <div class="text-center">
+                <button type="submit" class="btn btn-info">Get answers</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+      <div class="text-center p-5">
+        <h2>Stay in the Loop</h2>
+        <p class="lead muted">Know what is happening when it is happening :)</p>
+        <p class="my-5 text-muted">Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed reprehenderit quod corporis perspiciatis veritatis id obcaecati qui alias necessitatibus delectus iusto nostrum deserunt nam, numquam unde quia modi repellat. Quidem.</p>
+
+        <button class="btn btn-info" type="button" data-bs-toggle="modal" data-bs-target="#reg-Modal">Subscribe here</button>
+      </div>
+    </div>
+  </section>
+
+<!-- Modal -->
+<div class="modal fade" id="reg-Modal" tabindex="-1" aria-labelledby="reg-ModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <!-- modal header  -->
+      <div class="modal-header">
+        <h5 class="modal-title" id="reg-ModalLabel">Get the Latest Updates</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <!-- modal body  -->
+      <div class="modal-body">
+        <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Perspiciatis id perferendis atque optio numquam accusantium itaque at doloribus rerum similique placeat quisquam officia facere beatae, unde, eaque maxime praesentium maiores.</p>
+        <label for="modal-email" class="form-label">Your email address</label>
+        <input type="email" class="form-control" id="modal-email" placeholder="e.g. starnet@example.com">
+      </div>
+      <!-- modal footer  -->
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 </body>
 </html>

@@ -1,5 +1,7 @@
 body{
-    background-color: #49b2db;
+    background-image: url('img/hand-on-slot-machine.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
     margin: 15px;
     margin-top: 50px;
 }
@@ -9,6 +11,7 @@ body{
     font-family: Arial, Helvetica, sans-serif;
 }
 .register_form{
+    background-color: #49b2db;
     max-width: 500px;    
     border-radius: 10px;
     margin: 0 auto;

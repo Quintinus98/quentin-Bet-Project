@@ -23,9 +23,9 @@
         <img src="img/STARNET LOGO.jpg" alt="starnet logo" width="40" height="40" class="d-inline-block"><span class="fw-bold text-muted ms-2">StarnetBET</span>
       </a>
 
-      <div class="fw-bold">
-        <span style="color: white; display: inline-block;" class="justify-content-center text-center">Dashboard</span>
-      </div>
+      <!-- <div class="fw-bold justify-content-center" style="display: inline-block;">
+        <span style="color: white; display: inline-block;" >Dashboard</span>
+      </div> -->
 
       <!-- button to collapse a view -->
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -37,7 +37,7 @@
         <ul class="navbar-nav mb-2 mb-lg-0">
           <li class="nav-item">
             <!-- link an about here using this id #about-->
-            <a class="nav-link" href="#thegame">The Game</a>
+            <a class="nav-link" aria-current="page" href="#thegame">The Game</a>
           </li>
           <li class="nav-item">
             <!-- link an about here using this id #about-->
@@ -58,20 +58,83 @@
   <!-- This is where things get interesting -->
   <main>
     <div class="row margin_main">
-      <section class="col-5 col-md-4 col-lg-3 bg-light px-4 shadow">
-        <div class="p-1 mt-2">
-          <label class="form-label h2" for="wallet">Your Wallet</label>
-          <input class="form-control" type="text" name="wallet" id="wallet">
-          
-          <div class="text-muted mt-3">
-            <h3 class="mt-4">How to play</h3>
-            <p>Select a number from the options provided</p>
-          </div>
+      <section class="col-5 col-md-4 col-lg-3 bg-light px-4 shadow justify-content-center">
+        <!-- New side bar -->
+        <div class="d-flex flex-column flex-shrink-0 p-3 bg-light">
+          <hr>
+          <ul class="nav nav-pills flex-column mb-auto">
+            <li class="nav-item">
+              <a href="#" class="nav-link" aria-current="page"><i class="bi bi-house-door-fill"></i><span class="ms-2">Home</span></a>
+            </li>
+            <li class="nav-item">
+              <button class="nav-link btn btn-toggle collapsed" data-bs-toggle="collapse" data-bs-target="#dashboard-collapse" aria-expanded="false"><i class="bi bi-speedometer2"></i><span class="ms-2">Dashboard</span></button>
+              <div class="p-1 mt-2 collapse" id="dashboard-collapse">
+                <label class="form-label h2" for="wallet">My Wallet</label>
+                <input class="form-control" type="text" name="wallet" id="wallet">
+                <br>
+              </div>
+            </li>
+            <li class="nav-item">
+              <button class="btn btn-toggle collapsed nav-link" data-bs-toggle="collapse" data-bs-target="#thegame-collapse" aria-expanded="false"><i class="bi bi-dice-6"></i><span class="ms-2">How to Play</span></button>
+                <div class="collapse px-2" id="thegame-collapse">
+                  <div class="btn-toggle-nav fw-normal pb-1 small">
+                    <h3 class="mt-4">How to play</h3>
+                    <p>Select a number from the options provided</p>
+                    <hr>
+                    <ul class="list-unstyled">
+                      <li>Content 1</li>
+                      <li>Content 2</li>
+                      <li>Content 3</li>
+                      <li>Content 4</li>
+                    </ul><hr>
+                  </div>
+                </div>
+            </li>
+            <li class="nav-item">
+              <button class="btn btn-toggle collapsed nav-link" data-bs-toggle="collapse" data-bs-target="#fundwallet-collapse" aria-expanded="false"><i class="bi bi-bank"></i><span class="ms-2">Fund My Wallet</span></button>
+                <div class="collapse px-2" id="fundwallet-collapse">
+                  <div class="btn-toggle-nav fw-normal pb-1 small">
+                    <h3 class="mt-4">Fund My Wallet</h3>
+                    <p>Some code is going in here</p>
+                    <hr>
+                  </div>
+                </div>
+            </li>
+            <li class="nav-item">
+              <button class="nav-link btn btn-toggle collapsed" data-bs-toggle="collapse" data-bs-target="#contactus-collapse" aria-expanded="false"><i class="bi bi-person-lines-fill"></i><span class="ms-2">Contact Us</span></button>
+              <!-- collapsed contact us button  -->
+              <div class="collapse border-0 px-2" id="contactus-collapse">
+                <br>
+                <!-- form sends action to itself -->
+                <form action="#index.html" method="post">
+                  <!-- email  -->
+                  <label for="email" class="form-label">Enter your Email:</label>
+                  <div class="mb-4 input-group">
+                    <span class="input-group-text"><i class="bi bi-envelope-fill"></i></span>
+                    <input type="email" name="email" id="email" class="form-control" placeholder="e.g. starnet@example.com">
+                  </div>
+                  <!-- Query --> 
+                  <div class="form-floating my-3">
+                    <textarea class="form-control" name="query" id="query" style="height: 100px;"></textarea>
+                    <label for="query">Enter your question...</label>
+                  </div>
+    
+                  <!-- submit button  -->
+                  <div class="text-center">
+                    <button type="submit" class="btn btn-info">Get answers</button>
+                  </div>
+                </form>
+              </div>
+            </li>    
+          </ul>
+          <hr>
+        <!-- End of div  -->
         </div>
+
       </section>
 
       <section class="col-7 col-md-8 col-lg-8 p-2 justify-content-center">
-        <p class="text-center font-monospace">This is the game console. You are one step away from being a $ millioniare</p>     
+        <p class="text-center font-monospace px-3">This is the game console. You are one step away from being a $ millioniare</p>     
         <div class="grid_container p-5 justify-content-center ">
           <div class="grid-item"><button class="btn btn-outline-success">01</button></div>
           <div class="grid-item"><button class="btn btn-outline-success">02</button></div>
@@ -105,5 +168,20 @@
   </main>
 
   
+  <div class="p-3">
+    <a href="javascript:void(0);" class="nav" onclick="open_menu()" title="Menu"><i class="bi bi-list"></i></i></a>
+  </div>
+  <div class="sidenav collapse" id="sidenav" style="top: 118px; display: block;">
+    
+  </div>
+  
+
+
+
+
+
+
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 </body>
 </html>

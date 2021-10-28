@@ -59,11 +59,7 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
       <div class="collapse" id="collapseDashboard" data-parent="#sidebarExample">
         <div class="card bg-light m-3 p-2 border-0">
           <label class="form-label h2 text-center" for="wallet">My Wallet</label>
-<<<<<<< HEAD
           <input class="form-control" type="text" name="wallet" id="wallet" value="0" disabled>
-=======
-          <input class="form-control" type="text" name="wallet" id="wallet" disabled>
->>>>>>> 45eb8de0a04aea7e9883d60f1ac33eec304f6633
         </div>
       </div>
 
@@ -142,21 +138,9 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
     </ul>
   </div>
 
-<<<<<<< HEAD
   <div class="home_content justify-content-center">
 
     <div class="p-2 ">
-=======
-<<<<<<< HEAD
-  <div class="home_content justify-content-center">
-
-    <div class="p-2 ">
-=======
-  <div class="home_content">
-
-    <div class="p-2 justify-content-center">
->>>>>>> 33ae1c5391e321a86633c74def347ec9546b5e03
->>>>>>> 45eb8de0a04aea7e9883d60f1ac33eec304f6633
       <p class="text-center font-monospace px-3">This is the game console. You are one step away from being a $ millioniare</p>     
       <div class="grid_container p-5 justify-content-center ">
         <div class="grid-item"><button class="btn btn-outline-success">01</button></div>

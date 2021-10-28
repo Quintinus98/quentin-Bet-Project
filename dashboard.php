@@ -123,9 +123,9 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
               <textarea class="form-control" name="query" id="query" style="height: 70px;"></textarea>
             </div>
 
-            <!-- submit button  -->
+            <!-- button button  -->
             <div class="text-center">
-              <button type="submit" class="btn btn-success">Get answers</button>
+              <button type="button" class="btn btn-success">Get answers</button>
             </div>
           </form>
 
@@ -141,37 +141,119 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
   <div class="home_content justify-content-center">
 
     <div class="p-2 ">
-      <p class="text-center font-monospace px-3">This is the game console. You are one step away from being a $ millioniare</p>     
-      <div class="grid_container p-5 justify-content-center ">
-        <div class="grid-item"><button class="btn btn-outline-success">01</button></div>
-        <div class="grid-item"><button class="btn btn-outline-success">02</button></div>
-        <div class="grid-item"><button class="btn btn-outline-success">03</button></div>
-        <div class="grid-item"><button class="btn btn-outline-success">04</button></div>
-        <div class="grid-item"><button class="btn btn-outline-success">05</button></div>
-        <div class="grid-item"><button class="btn btn-outline-success">06</button></div>
-        <div class="grid-item"><button class="btn btn-outline-success">07</button></div>
-        <div class="grid-item"><button class="btn btn-outline-success">08</button></div>
-        <div class="grid-item"><button class="btn btn-outline-success">09</button></div>
-        <div class="grid-item"><button class="btn btn-outline-success">10</button></div>
-        <div class="grid-item"><button class="btn btn-outline-success">11</button></div>
-        <div class="grid-item"><button class="btn btn-outline-success">12</button></div>
-        <div class="grid-item"><button class="btn btn-outline-success">13</button></div>
-        <div class="grid-item"><button class="btn btn-outline-success">14</button></div>
-        <div class="grid-item"><button class="btn btn-outline-success">15</button></div>
-        <div class="grid-item"><button class="btn btn-outline-success">16</button></div>
-        <div class="grid-item"><button class="btn btn-outline-success">17</button></div>
-        <div class="grid-item"><button class="btn btn-outline-success">18</button></div>
-        <div class="grid-item"><button class="btn btn-outline-success">19</button></div>
-        <div class="grid-item"><button class="btn btn-outline-success">20</button></div>
-        <div class="grid-item"><button class="btn btn-outline-success">21</button></div>
-        <div class="grid-item"><button class="btn btn-outline-success">22</button></div>
-        <div class="grid-item"><button class="btn btn-outline-success">23</button></div>
-        <div class="grid-item"><button class="btn btn-outline-success">24</button></div>
-        <div class="grid-item"><button class="btn btn-outline-success">25</button></div>
-        <div class="grid-item"><button type="submit"  value="30" class="btn btn-outline-success">30</button></div>
+      <p class="text-center font-monospace px-3">This is the game console. You are one step away from being a $ millioniare</p>
+      <!-- <p class="px-3 text-center">Choose a Number:</p> -->
+      <div class="grid_container px-5 py-3 justify-content-center ">
+        <div class="grid-item"><input type="button" value="01" class="btn btn-outline-success"></div>
+        <div class="grid-item"><input type="button" value="02" class="btn btn-outline-success"></div>
+        <div class="grid-item"><input type="button" value="03" class="btn btn-outline-success"></div>
+        <div class="grid-item"><input type="button" value="04" class="btn btn-outline-success"></div>
+        <div class="grid-item"><input type="button" value="05" class="btn btn-outline-success"></div>
+        <div class="grid-item"><input type="button" value="06" class="btn btn-outline-success"></div>
+        <div class="grid-item"><input type="button" value="07" class="btn btn-outline-success"></div>
+        <div class="grid-item"><input type="button" value="08" class="btn btn-outline-success"></div>
+        <div class="grid-item"><input type="button" value="09" class="btn btn-outline-success"></div>
+        <div class="grid-item"><input type="button" value="10" class="btn btn-outline-success"></div>
+        <div class="grid-item"><input type="button" value="11" class="btn btn-outline-success"></div>
+        <div class="grid-item"><input type="button" value="12" class="btn btn-outline-success"></div>
+        <div class="grid-item"><input type="button" value="13" class="btn btn-outline-success"></div>
+        <div class="grid-item"><input type="button" value="14" class="btn btn-outline-success"></div>
+        <div class="grid-item"><input type="button" value="15" class="btn btn-outline-success"></div>
+        <div class="grid-item"><input type="button" value="16" class="btn btn-outline-success"></div>
+        <div class="grid-item"><input type="button" value="17" class="btn btn-outline-success"></div>
+        <div class="grid-item"><input type="button" value="18" class="btn btn-outline-success"></div>
+        <div class="grid-item"><input type="button" value="19" class="btn btn-outline-success"></div>
+        <div class="grid-item"><input type="button" value="20" class="btn btn-outline-success"></div>
+        <!-- <div class="grid-item"><input type="button" value="21" class="btn btn-outline-success"></div>
+        <div class="grid-item"><input type="button" value="22" class="btn btn-outline-success"></div>
+        <div class="grid-item"><input type="button" value="23" class="btn btn-outline-success"></div>
+        <div class="grid-item"><input type="button" value="24" class="btn btn-outline-success"></div>
+        <div class="grid-item"><input type="button" value="25" class="btn btn-outline-success"></div> -->
       </div>
     </div>
      
+    <span id="output">Choose a Number</span>
+
+
+    <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="post">
+      <input type="text" id="output2" name="confirm">
+      
+      <button type="submit" class="btn btn-primary">Confirm</button>
+    </form>
+
+    <?php 
+      // echo $_POST['confirm'] 
+      ?>
+    <!-- some backend stuffs -->
+
+    <script>
+      const button = document.querySelectorAll('.btn');
+
+      for (let i = 0; i < button.length; i++) {
+        button[i].addEventListener('click', updateButton);
+      }
+
+      function updateButton() {
+        document.getElementById('output').innerText = "You selected: " + this.value;
+        document.getElementById('output2').value = this.value;
+      }
+    </script>
+
+    <?php
+      function get_random(){
+        return rand(1, 25);
+      }
+      $num = 0;
+      if (isset($_POST["confirm"])) {
+        $num = $_POST["confirm"];
+        echo "You selected: " .  $num;
+      }
+      else {
+        $val = get_random();
+      if ($num == 0){
+        echo "Let's Play";
+      }else{
+        if ($val == $num) {
+          echo nl2br("\nYou win");
+        } else {
+          echo nl2br("\n You Lose");
+        }
+      }
+      }
+      
+      
+    ?>
+
+
+
+    <script>
+    window.onload = function(){
+        document.getElementsByName("mybutton").onclick = function(){
+            document.getElementsByName("postvar")[0].value = this.value;
+            document.forms.myform.submit();
+        }
+    };
+    </script>
+
+    <form name="myform" action="" method="POST">
+        <input type="text" name="postvar" value="" />
+
+        <input type="button" value="0" name="mybutton">
+        <input type="button" value="1" name="mybutton">
+        <input type="button" value="2" name="mybutton">
+    </form>
+
+    <?php 
+      if (isset($_POST["postvar"]))
+      {
+          echo $_POST["postvar"];
+      }
+    ?>
+
+
+
+
+
 
 
   </div>

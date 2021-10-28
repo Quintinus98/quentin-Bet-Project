@@ -1,0 +1,27 @@
+First things First
+
+
+Implement a function to generate a random number (1-25)
+
+Store the random number 
+
+Implement a function to get button input
+
+Display user input in a disabled text field
+
+Ask user for confirmation of input ELSE user should choose another number
+
+Once confirmed, check user input with random number for a match.
+
+Display win or loss depending on match.
+
+If win {
+  Get value in wallet
+
+  Increment amount in wallet by win value.
+  
+} ELSE {
+  Get value in wallet
+
+  Decrease amount in wallet by loss value
+}

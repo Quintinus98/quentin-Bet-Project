@@ -14,6 +14,7 @@ $email = $password = "";
 $errors = array('email'=>"", 'password'=>"");
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    
     // Check email
     if (empty(trim($_POST["email"]))) {
         $errors['email'] = "Please enter your email.";
@@ -44,7 +45,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             if(mysqli_stmt_execute($stmt)){
                 // Store result
                 mysqli_stmt_store_result($stmt);
-                printf("Number of rows: %d.\n", mysqli_stmt_num_rows($stmt));
+                
                 // Check if email exists, if yes then verify password
                 if(mysqli_stmt_num_rows($stmt) == 1){                    
                     // Bind result variables

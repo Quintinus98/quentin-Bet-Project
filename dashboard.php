@@ -8,6 +8,34 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
   exit;
 }
 
+$message = "";
+// function to get random value
+function get_random(){
+  return rand(1, 25);
+}
+
+// set num to zero 
+$num = 0;
+
+// evaluate condition and go ahead.
+if (isset($_POST['confirm'])) {
+  $num = (int)$_POST["confirm"];
+  // check if the user's selection is correct
+  $val = get_random();
+  if ($num == 0){
+    $message = "Invalid Number!";
+  }else{
+    $message = ("Computer generated value: $val") ;
+    $message = $message . nl2br("\nYour selection: $num");
+    if ($val == $num) {
+      $message .= nl2br("\nYou win");
+    } else {
+      $message .= nl2br("\n You Lose");
+    }
+  }
+
+}
+
 
 ?>
 
@@ -111,7 +139,7 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
         <div class="card bg-light m-3 p-2 lead border-0 accordion-body border-pill" style="font-size: 14px;">
 
           <!-- form sends action to itself -->
-          <form action="#index.html" method="post">
+          <form action="#" method="post">
             <!-- email  -->
             <div class="my-4 input-group">
               <span class="input-group-text pe-2"><i class='bx bx-envelope'></i>
@@ -125,7 +153,7 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
 
             <!-- button button  -->
             <div class="text-center">
-              <button type="button" class="btn btn-success">Get answers</button>
+              <button type="submit" class="btn btn-success">Get answers</button>
             </div>
           </form>
 
@@ -138,118 +166,70 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
     </ul>
   </div>
 
-  <div class="home_content justify-content-center">
+  <div class="home_content">
+    <div class="py-2 px-3 justify-content-center">
+      <div class="mt-2 text-center bg-info py-2 border border-dark border-3 text-light">
+        <p class="text-center font-monospace py-2">This is the game console. You are one step away from being a $ millioniare</p>
+        <p class="text-center py-2">Select a number to play</p>
+      </div>
 
-    <div class="p-2 ">
-      <p class="text-center font-monospace px-3">This is the game console. You are one step away from being a $ millioniare</p>
-      <!-- <p class="px-3 text-center">Choose a Number:</p> -->
-      <div class="grid_container px-5 py-3 justify-content-center ">
-        <div class="grid-item"><input type="button" value="01" class="btn btn-outline-success"></div>
-        <div class="grid-item"><input type="button" value="02" class="btn btn-outline-success"></div>
-        <div class="grid-item"><input type="button" value="03" class="btn btn-outline-success"></div>
-        <div class="grid-item"><input type="button" value="04" class="btn btn-outline-success"></div>
-        <div class="grid-item"><input type="button" value="05" class="btn btn-outline-success"></div>
-        <div class="grid-item"><input type="button" value="06" class="btn btn-outline-success"></div>
-        <div class="grid-item"><input type="button" value="07" class="btn btn-outline-success"></div>
-        <div class="grid-item"><input type="button" value="08" class="btn btn-outline-success"></div>
-        <div class="grid-item"><input type="button" value="09" class="btn btn-outline-success"></div>
-        <div class="grid-item"><input type="button" value="10" class="btn btn-outline-success"></div>
-        <div class="grid-item"><input type="button" value="11" class="btn btn-outline-success"></div>
-        <div class="grid-item"><input type="button" value="12" class="btn btn-outline-success"></div>
-        <div class="grid-item"><input type="button" value="13" class="btn btn-outline-success"></div>
-        <div class="grid-item"><input type="button" value="14" class="btn btn-outline-success"></div>
-        <div class="grid-item"><input type="button" value="15" class="btn btn-outline-success"></div>
-        <div class="grid-item"><input type="button" value="16" class="btn btn-outline-success"></div>
-        <div class="grid-item"><input type="button" value="17" class="btn btn-outline-success"></div>
-        <div class="grid-item"><input type="button" value="18" class="btn btn-outline-success"></div>
-        <div class="grid-item"><input type="button" value="19" class="btn btn-outline-success"></div>
-        <div class="grid-item"><input type="button" value="20" class="btn btn-outline-success"></div>
-        <!-- <div class="grid-item"><input type="button" value="21" class="btn btn-outline-success"></div>
-        <div class="grid-item"><input type="button" value="22" class="btn btn-outline-success"></div>
-        <div class="grid-item"><input type="button" value="23" class="btn btn-outline-success"></div>
-        <div class="grid-item"><input type="button" value="24" class="btn btn-outline-success"></div>
-        <div class="grid-item"><input type="button" value="25" class="btn btn-outline-success"></div> -->
+
+      <div class="row justify-content-left p-3">
+        
+        <div class="col-lg-9 grid_container justify-content-center " >
+          <div class="grid-item"><input type="button" value="01" class="btn btn-outline-success"></div>
+          <div class="grid-item"><input type="button" value="02" class="btn btn-outline-success"></div>
+          <div class="grid-item"><input type="button" value="03" class="btn btn-outline-success"></div>
+          <div class="grid-item"><input type="button" value="04" class="btn btn-outline-success"></div>
+          <div class="grid-item"><input type="button" value="05" class="btn btn-outline-success"></div>
+          <div class="grid-item"><input type="button" value="06" class="btn btn-outline-success"></div>
+          <div class="grid-item"><input type="button" value="07" class="btn btn-outline-success"></div>
+          <div class="grid-item"><input type="button" value="08" class="btn btn-outline-success"></div>
+          <div class="grid-item"><input type="button" value="09" class="btn btn-outline-success"></div>
+          <div class="grid-item"><input type="button" value="10" class="btn btn-outline-success"></div>
+          <div class="grid-item"><input type="button" value="11" class="btn btn-outline-success"></div>
+          <div class="grid-item"><input type="button" value="12" class="btn btn-outline-success"></div>
+          <div class="grid-item"><input type="button" value="13" class="btn btn-outline-success"></div>
+          <div class="grid-item"><input type="button" value="14" class="btn btn-outline-success"></div>
+          <div class="grid-item"><input type="button" value="15" class="btn btn-outline-success"></div>
+          <div class="grid-item"><input type="button" value="16" class="btn btn-outline-success"></div>
+          <div class="grid-item"><input type="button" value="17" class="btn btn-outline-success"></div>
+          <div class="grid-item"><input type="button" value="18" class="btn btn-outline-success"></div>
+          <div class="grid-item"><input type="button" value="19" class="btn btn-outline-success"></div>
+          <div class="grid-item"><input type="button" value="20" class="btn btn-outline-success"></div>
+          <div class="grid-item"><input type="button" value="21" class="btn btn-outline-success"></div>
+          <div class="grid-item"><input type="button" value="22" class="btn btn-outline-success"></div>
+          <div class="grid-item"><input type="button" value="23" class="btn btn-outline-success"></div>
+          <div class="grid-item"><input type="button" value="24" class="btn btn-outline-success"></div>
+          <div class="grid-item"><input type="button" value="25" class="btn btn-outline-success"></div>
+        </div>
+
+        <!-- Confirmation form/button  -->
+        <div class="col-lg-3 text-center bg-info py-3 border border-dark border-3 text-light mb-2">
+          <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="post">
+            <label for="confirm">Click the number to confirm</label>
+            <input type="submit" id="output" name="confirm" class="btn btn-success" value="00">
+          </form>
+
+          <div>
+            <hr><?php echo $message ; ?><hr>
+          </div>
+
+        </div>
+
+
+
       </div>
     </div>
      
-    <span id="output">Choose a Number</span>
+  
 
 
-    <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="post">
-      <input type="text" id="output2" name="confirm">
-      
-      <button type="submit" class="btn btn-primary">Confirm</button>
-    </form>
-
-    <?php 
-      // echo $_POST['confirm'] 
-      ?>
-    <!-- some backend stuffs -->
-
-    <script>
-      const button = document.querySelectorAll('.btn');
-
-      for (let i = 0; i < button.length; i++) {
-        button[i].addEventListener('click', updateButton);
-      }
-
-      function updateButton() {
-        document.getElementById('output').innerText = "You selected: " + this.value;
-        document.getElementById('output2').value = this.value;
-      }
-    </script>
-
-    <?php
-      function get_random(){
-        return rand(1, 25);
-      }
-      $num = 0;
-      if (isset($_POST["confirm"])) {
-        $num = $_POST["confirm"];
-        echo "You selected: " .  $num;
-      }
-      else {
-        $val = get_random();
-      if ($num == 0){
-        echo "Let's Play";
-      }else{
-        if ($val == $num) {
-          echo nl2br("\nYou win");
-        } else {
-          echo nl2br("\n You Lose");
-        }
-      }
-      }
-      
-      
-    ?>
+    
 
 
 
-    <script>
-    window.onload = function(){
-        document.getElementsByName("mybutton").onclick = function(){
-            document.getElementsByName("postvar")[0].value = this.value;
-            document.forms.myform.submit();
-        }
-    };
-    </script>
-
-    <form name="myform" action="" method="POST">
-        <input type="text" name="postvar" value="" />
-
-        <input type="button" value="0" name="mybutton">
-        <input type="button" value="1" name="mybutton">
-        <input type="button" value="2" name="mybutton">
-    </form>
-
-    <?php 
-      if (isset($_POST["postvar"]))
-      {
-          echo $_POST["postvar"];
-      }
-    ?>
-
+    
 
 
 
@@ -266,12 +246,21 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
 
 
 
+  <script>
+    const button = document.querySelectorAll('.btn');
 
-  
+    for (let i = 0; i < button.length; i++) {
+      button[i].addEventListener('click', updateButton);
+    }
+
+    function updateButton() {
+      document.getElementById('output').value = this.value;
+    }
+  </script>
   <script src="script.js"></script>
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 
 
 

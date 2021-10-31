@@ -8,7 +8,7 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
   exit;
 }
 
-
+// check if user selection matches computer selection.
 $message = "";
 // function to get random value
 function get_random(){
@@ -36,6 +36,45 @@ if (isset($_POST['confirm'])) {
   }
 
 }
+
+
+// adjust wallet value.
+echo("{$_SESSION['id']}");
+echo $_SESSION['email'];
+$wallet = 10;
+
+
+require_once("config/db_connect.php");
+
+$sql = "CREATE TABLE $_SESSION['email'] (
+id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+guess INT(6),
+computerValue INT(6),
+state_text VARCHAR(50) NOT NULL,
+stake INT(6),
+gain_loss INT(6),
+wallet INT(6),
+created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+)";
+
+if ($conn->query($sql) === TRUE) {
+  echo "Table $_SESSION['email'] created successfully";
+} else {
+  echo "Error creating table: " . $conn->error;
+}
+
+$conn->close();
+
+
+
+
+
+
+
+
+
+
+
 
 ?>
 
@@ -87,7 +126,7 @@ if (isset($_POST['confirm'])) {
       <div class="collapse" id="collapseDashboard" data-parent="#sidebarExample">
         <div class="card bg-light m-3 p-2 border-0">
           <label class="form-label h2 text-center" for="wallet">My Wallet</label>
-          <input class="form-control" type="text" name="wallet" id="wallet" value="0" disabled>
+          <input class="form-control" type="text" name="wallet" id="wallet" value="<?php echo htmlspecialchars($wallet); ?>" disabled>
         </div>
       </div>
 
@@ -166,7 +205,7 @@ if (isset($_POST['confirm'])) {
     </ul>
   </div>
 
-  <div class="home_content">
+  <div class="home_content bg-light">
     <div class="py-2 px-3 justify-content-center">
       <div class="mt-2 text-center bg-info py-2 border border-dark border-3 text-light">
         <p class="text-center font-monospace py-2">This is the game console. You are one step away from being a $ millioniare</p>
@@ -214,11 +253,6 @@ if (isset($_POST['confirm'])) {
           <div>
             <hr><?php echo $message ; ?><hr>
           </div>
-
-          <?php 
-            echo("{$_SESSION['id']}");
-            echo $_SESSION['email'];
-          ?>
 
         </div>
 

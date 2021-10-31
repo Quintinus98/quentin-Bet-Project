@@ -17,8 +17,8 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
       $email = $_POST['email'];
       if(!filter_var($email, FILTER_VALIDATE_EMAIL)){
           $errors['email'] = 'Email must be a valid email address';
-      }
-  }
+        }
+    }
 
   // firstname 
   if (empty($_POST['first_name'])){
@@ -32,12 +32,12 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 
   // lastname 
   if (empty($_POST['last_name'])){
-      $errors['last_name'] = 'A last name is required';
+    $errors['last_name'] = 'A last name is required';
   }else{
-      $last_name = $_POST['last_name'];
-      if(!preg_match('/^[a-zA-Z\s]+$/', $last_name)){
-          $errors['last_name'] = 'Last name must be letters and spaces only';
-      }
+    $last_name = $_POST['last_name'];
+    if(!preg_match('/^[a-zA-Z\s]+$/', $last_name)){
+        $errors['last_name'] = 'Last name must be letters and spaces only';
+    }
   }
 
   // Username 
@@ -46,29 +46,39 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
   } elseif(!preg_match('/^[a-zA-Z0-9_]+$/', trim($_POST["username"]))){
       $errors['username'] = "Username can only contain letters, numbers, and underscores.";
   } else{
+      $username = trim($_POST['username']);
+  }
+
+  // email 
+  if (empty($_POST['email'])){
+    $errors['email'] = 'An email is required';
+  } 
+  elseif(!filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)){
+      $errors['email'] = 'Email must be a valid email address';
+  }
+  else {
     // Prepare a select statement
-    $sql = "SELECT id FROM users WHERE username = ?";
-    
+    $sql = "SELECT id FROM users WHERE email = ?";
     if($stmt = mysqli_prepare($conn, $sql)){
-        // Bind variables to the prepared statement as parameters
-        mysqli_stmt_bind_param($stmt, "s", $param_username);
+      // Bind variables to the prepared statement as parameters
+      mysqli_stmt_bind_param($stmt, "s", $param_email);
+      
+      // Set parameters
+      $param_email = trim($_POST["email"]);
+      
+      // Attempt to execute the prepared statement
+      if(mysqli_stmt_execute($stmt)){
+          /* store result */
+        mysqli_stmt_store_result($stmt);
         
-        // Set parameters
-        $param_username = trim($_POST["username"]);
-        
-        // Attempt to execute the prepared statement
-        if(mysqli_stmt_execute($stmt)){
-            /* store result */
-            mysqli_stmt_store_result($stmt);
-            
-            if(mysqli_stmt_num_rows($stmt) == 1){
-                $errors['username'] = "This username is already taken.";
-            } else{
-                $username = trim($_POST["username"]);
-            }
+        if(mysqli_stmt_num_rows($stmt) == 1){
+          $errors['email'] = 'This email is already taken.';
         } else{
-            echo "Oops! Something went wrong. Please try again later.";
+          $email = trim($_POST["email"]);
         }
+      } else{
+        echo "Oops! Something went wrong. Please try again later.";
+      }
 
         // Close statement
         mysqli_stmt_close($stmt);
@@ -86,16 +96,16 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     // first, password must be greater than 8
     $password = trim($_POST['password']);
     if (strlen(trim($_POST["password"])) < 8) {
-        $errors["password"] = "Your Password Must Contain At Least 8 Characters!";
+      $errors["password"] = "Your Password Must Contain at least 8 Characters!";
     }
     elseif(!preg_match("#[0-9]+#",$password)) {
-        $errors["password"] = "Your Password Must Contain At Least 1 Number!";
+      $errors["password"] = "Your Password Must Contain at least 1 Number!";
     }
     elseif(!preg_match("#[A-Z]+#",$password)) {
-        $errors["password"] = "Your Password Must Contain At Least 1 Capital Letter!";
+      $errors["password"] = "Your Password Must Contain at least 1 Capital Letter!";
     }
     elseif(!preg_match("#[a-z]+#",$password)) {
-        $errors["password"] = "Your Password Must Contain At Least 1 Lowercase Letter!";
+      $errors["password"] = "Your Password Must Contain at least 1 Lowercase Letter!";
     }
   }
 

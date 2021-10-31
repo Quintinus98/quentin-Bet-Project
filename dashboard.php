@@ -8,6 +8,7 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
   exit;
 }
 
+
 $message = "";
 // function to get random value
 function get_random(){
@@ -36,10 +37,9 @@ if (isset($_POST['confirm'])) {
 
 }
 
-
 ?>
 
-
+ <!-- start of Html file  -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -103,10 +103,10 @@ if (isset($_POST['confirm'])) {
       <div class="collapse" id="collapseHowToPlay" data-parent="#sidebarExample">
         <div class="card bg-light m-3 p-2 lead border-0" style="font-size: 14px;">
           Select a number from the options provided
-          <ul class="list-unstyled text-muted">
-            <li>Content 1</li>
-            <li>Content 2</li>
-          </ul>
+          <div class="list-unstyled text-muted">
+            <p>Confirm your selected number. Every win you make multiplies your earnings 7 times.</p>
+            <p>Good luck!</p>
+          </div>
         </div>
       </div>
     
@@ -176,7 +176,7 @@ if (isset($_POST['confirm'])) {
 
       <div class="row justify-content-left p-3">
         
-        <div class="col-lg-9 grid_container justify-content-center " >
+        <div class="col-lg-9 grid_container justify-content-center mb-3" >
           <div class="grid-item"><input type="button" value="01" class="btn btn-outline-success"></div>
           <div class="grid-item"><input type="button" value="02" class="btn btn-outline-success"></div>
           <div class="grid-item"><input type="button" value="03" class="btn btn-outline-success"></div>
@@ -214,6 +214,11 @@ if (isset($_POST['confirm'])) {
           <div>
             <hr><?php echo $message ; ?><hr>
           </div>
+
+          <?php 
+            echo("{$_SESSION['id']}");
+            echo $_SESSION['email'];
+          ?>
 
         </div>
 

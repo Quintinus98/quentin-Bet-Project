@@ -1,8 +1,8 @@
 <?php
 
   define("DB_SERVER", "localhost");
-  define("DB_USERNAME", "david");
-  define("DB_PASSWORD", "password");
+  define("DB_USERNAME", "root");
+  define("DB_PASSWORD", "");
   define("DB_NAME", "betnow_database");
 
   // Attempt to connect to MySQL database 

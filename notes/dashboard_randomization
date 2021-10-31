@@ -15,6 +15,12 @@ Once confirmed, check user input with random number for a match.
 
 Display win or loss depending on match.
 
+
+New Table for Logged In user
+userId, guess, computerValue, state, stake(text), gain/loss , wallet, created_at
+
+
+
 If win {
   Get value in wallet
 

@@ -17,7 +17,7 @@ Display win or loss depending on match.
 
 
 New Table for Logged In user
-userId, guess, computerValue, state, stake(text), gain/loss , wallet, created_at
+userId, guess, computerValue, state(text), stake, gain/loss , wallet, created_at
 
 
 

@@ -8,68 +8,105 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
   exit;
 }
 
-// check if user selection matches computer selection.
-$message = "";
+
+include("config/db_connect.php");
+
+
 // function to get random value
 function get_random(){
   return rand(1, 25);
 }
 
-// set num to zero 
-$num = 0;
+// Initialize some variables 
+$guess = 0;
+$state_text = "";
+$message = "";
+$wallet = 100;
+$email = $_SESSION['email'];
+
+
+$wallet_sql = "SELECT TOP 1 email, wallet FROM users ORDER BY id DESC";
+$result_wallet = mysqli_query($conn, $wallet_sql);
+
+printf ($result_wallet);
+// if(mysqli_num_rows($result_wallet) > 0) {
+//   $row = mysqli_fetch_assoc($result_wallet);
+//   $wallet = $row['wallet'];
+// }
 
 // evaluate condition and go ahead.
 if (isset($_POST['confirm'])) {
-  $num = (int)$_POST["confirm"];
+  
+  // if ($table_val !== false) {
+  //   // table exists
+
+  // } else {
+    $sql = "CREATE TABLE IF NOT EXISTS users (
+      id INT(6) NOT NULL AUTO_INCREMENT PRIMARY KEY,
+      email VARCHAR(50) NOT NULL,
+      guess INT(6),
+      computerValue INT(6),
+      state_text VARCHAR(50) NOT NULL,
+      stake INT(6),
+      gain_loss INT(6),
+      wallet INT(6),
+      created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+    )";
+      
+    // if ($conn->query($sql) === TRUE) {
+    //   echo "Table users created successfully";
+    // } else {
+    //   echo "Error creating table - users: " . $conn->error;
+    // }
+    
+  // }
+
+
+  // --------------------------------------------
+  $guess = (int)$_POST["confirm"];
+  $computerVal = get_random();
+
   // check if the user's selection is correct
-  $val = get_random();
-  if ($num == 0){
-    $message = "Invalid Number!";
+  if ($guess == 0){
+    $state_text = "Invalid Number!";
   }else{
-    $message = ("Computer generated value: $val") ;
-    $message = $message . nl2br("\nYour selection: $num");
-    if ($val == $num) {
-      $message .= nl2br("\nYou win");
+    $message = ("Computer generated value: $computerVal") ;
+    $message .= nl2br("\nYour selection: $guess");
+    if ($computerVal == $guess) {
+      $state_text = "You win";
     } else {
-      $message .= nl2br("\n You Lose");
+      $state_text = "You Lose";
     }
   }
 
+  // Get stake from form
+  $stake = (int)$_POST['stake'];
+
+  if ($state_text == "You win") {
+    $gain_loss = $stake * 7;
+  } else {
+    $gain_loss = $stake * (-1);
+  }
+  $wallet += $gain_loss;
+  // --------------------------------------------
+
+  $query = "INSERT INTO users (email, guess, computerValue, state_text, stake, gain_loss, wallet) VALUES ('$email','$guess', '$computerVal', '$state_text', '$stake', '$gain_loss', '$wallet')";
+  
+  $conn->query($query);
+
+
+  //  
+
+  // if ($conn->query($query)===TRUE){
+  //   echo "New record created successfully";
+  // } else {
+  //   echo "Error: ". $query . "<br>". $conn->error;
+  // }
+
+
+ $conn -> close();
+
 }
-
-
-// adjust wallet value.
-echo("{$_SESSION['id']}");
-echo $_SESSION['email'];
-$wallet = 10;
-
-
-require_once("config/db_connect.php");
-
-$sql = "CREATE TABLE $_SESSION['email'] (
-id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-guess INT(6),
-computerValue INT(6),
-state_text VARCHAR(50) NOT NULL,
-stake INT(6),
-gain_loss INT(6),
-wallet INT(6),
-created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-)";
-
-if ($conn->query($sql) === TRUE) {
-  echo "Table $_SESSION['email'] created successfully";
-} else {
-  echo "Error creating table: " . $conn->error;
-}
-
-$conn->close();
-
-
-
-
-
-
 
 
 
@@ -246,12 +283,22 @@ $conn->close();
         <!-- Confirmation form/button  -->
         <div class="col-lg-3 text-center bg-info py-3 border border-dark border-3 text-light mb-2">
           <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="post">
+            <label for="stake">Stake: </label>
+            <input type="number" min="0" max="<?php echo $wallet; ?>" name="stake" id="stake" required>
+            <br>
             <label for="confirm">Click the number to confirm</label>
             <input type="submit" id="output" name="confirm" class="btn btn-success" value="00">
           </form>
 
           <div>
-            <hr><?php echo $message ; ?><hr>
+            <hr>
+            <?php 
+            echo $message ; 
+            // if ($message !== "Invalid Number!") {
+              echo "<br>". $state_text;
+            // }            
+            ?>
+            <hr>
           </div>
 
         </div>
